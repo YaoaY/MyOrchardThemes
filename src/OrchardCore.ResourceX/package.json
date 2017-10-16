@@ -1,0 +1,25 @@
+{
+  "name": "orchardcore.resoucesex",
+  "version": "1.0.0",
+  "description": "OrchardCore.Resources 提供的资源有限，并且使用国外 CDN 。\r 因此创建该模块，提供更多的公用资源，并内置国内 CDN ，方便在国内使用。",
+  "main": "index.js",
+  "dependencies": {
+    "animate.css": "^3.5.2",
+    "bootstrap": "^3.3.7",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.2.1",
+    "jquery-slimscroll": "^1.3.8",
+    "metismenu": "^2.7.0"
+  },
+  "devDependencies": {
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-npm-dist": "^0.1.6",
+    "gulp-rename": "^1.2.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

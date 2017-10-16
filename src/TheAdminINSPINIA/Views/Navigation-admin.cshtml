@@ -1,0 +1,19 @@
+﻿@{
+    TagBuilder tag = Tag(Model, "ul");
+
+    tag.AddCssClass("nav metismenu");
+    tag.Attributes["id"] = "side-menu";
+    tag.InnerHtml.AppendHtml(await DisplayAsync(await New.NavHeader()));
+    foreach (var item in Model)
+    {
+        item.MenuLevel = 0;
+        tag.InnerHtml.AppendHtml(await DisplayAsync(item));
+    }
+}
+
+<nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="sidebar-collapse">
+        @tag
+    </div>    
+</nav>
+<!-- Menu rendered on @DateTime.UtcNow.ToString("r") -->

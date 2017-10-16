@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="obj\**" />
+    <EmbeddedResource Remove="obj\**" />
+    <None Remove="obj\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="OrchardCore.DisplayManagement" Version="1.0.0-beta1-3375" />
+    <PackageReference Include="OrchardCore.Theme.Targets" Version="1.0.0-beta1-3375" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Views\NavigationItem-admin-level-2.cshtml">
+      <PackagePath>assets\$(PackageId)\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Assets\js\" />
+  </ItemGroup>
+
+</Project>

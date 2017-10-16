@@ -1,0 +1,9 @@
+﻿Name: ResourceX
+AntiForgery: enabled
+Author: Dr.Yao
+Website: http://orchardproject.net
+Version: 2.0.x
+OrchardVersion: 2.0.x
+Description:
+FeatureDescription: Resources For MyThemes
+Category: Theming

@@ -1,0 +1,15 @@
+﻿@{
+    // Morphing the shape to keep Model untouched
+    Model.Metadata.Alternates.Clear();
+    Model.Metadata.Type = "NavigationItemText";
+    Model.Metadata.Alternates.Add("NavigationItemText_Id__" + Model.Id);
+
+    TagBuilder tag = Tag(Model, "a");
+    tag.Attributes["href"] = Model.Href ?? "#";
+    tag.InnerHtml.AppendHtml("<span class=\"nav-label\">");
+    tag.InnerHtml.AppendHtml(await DisplayAsync(Model));
+    tag.InnerHtml.AppendHtml("</span>");
+    
+
+}
+@tag

@@ -1,0 +1,9 @@
+[
+  {
+    "generateSourceMaps": false,
+    "inputs": [
+      "Assets/css/style.css"
+    ],
+    "output": "Content/css/style.min.css"
+  }
+]

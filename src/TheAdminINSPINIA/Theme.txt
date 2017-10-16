@@ -1,0 +1,6 @@
+﻿Name: TheAdminINSPINIA
+AntiForgery: enabled
+Author: Dr.Yao
+Website: http://www.orchardcore.cn
+Description: INSPINIA Theme
+Tags: admin

@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Assets\**" />
+    <Compile Remove="node_modules\**" />
+    <Compile Remove="obj\**" />
+    <EmbeddedResource Remove="Assets\**" />
+    <EmbeddedResource Remove="node_modules\**" />
+    <EmbeddedResource Remove="obj\**" />
+    <None Remove="Assets\**" />
+    <None Remove="node_modules\**" />
+    <None Remove="obj\**" />
+    <PackageAssetFiles Remove="node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="package-lock.json" />
+    <None Remove="package-lock.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.0.0" />
+    <PackageReference Include="OrchardCore.AsModule" Version="1.0.0-beta1-3219" />
+    <PackageReference Include="OrchardCore.ContentManagement" Version="1.0.0-beta1-3375" />
+    <PackageReference Include="OrchardCore.DisplayManagement" Version="1.0.0-beta1-3375" />
+    <PackageReference Include="OrchardCore.ResourceManagement.Abstractions" Version="1.0.0-beta1-3375" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Content\" />
+  </ItemGroup>
+
+</Project>

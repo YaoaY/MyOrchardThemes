@@ -1,0 +1,34 @@
+﻿@inject OrchardCore.Settings.ISiteService SiteService
+@{
+    var site = await SiteService.GetSiteSettingsAsync();
+}
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>@RenderTitleSegments(site.SiteName, "before")</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />    
+    <style asp-name="X-bootstrap"></style>
+    <script asp-name="X-jQuery" use-cdn="false" at="Foot"></script>
+    <script asp-name="X-bootstrap" use-cdn="false" at="Foot"></script>
+    <script asp-name="X-metisMenu" use-cdn="false" at="Foot"></script> 
+    <script asp-name="X-JQuery-slimscroll" at="Foot"></script>
+    <script src="/TheAdminINSPINIA/js/script.js" at="Foot"></script>
+    <resources type="Header" />
+    <link rel="stylesheet" href="/TheAdminINSPINIA/css/style.css" type="text/css">
+</head>
+<body>
+    <div id="wrapper">
+        @await RenderSectionAsync("Navigation", required: false)
+        <div id="page-wrapper" class="gray-bg">
+            @await RenderSectionAsync("NavbarTop", required: false)
+            @await RenderBodyAsync()
+            @await RenderSectionAsync("Footer", required: false)
+        </div>
+    </div>
+    <resources type="Footer"/>
+</body>
+
+</html>
