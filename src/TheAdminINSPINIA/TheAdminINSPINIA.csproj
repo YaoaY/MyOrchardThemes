@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Views\NavigationItem-admin-level-2.cshtml">
+    <None Update="Views\NavigationItem-admin.cshtml">
       <PackagePath>assets\$(PackageId)\</PackagePath>
     </None>
   </ItemGroup>

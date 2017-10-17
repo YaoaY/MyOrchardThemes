@@ -1,0 +1,53 @@
+﻿@{
+    TagBuilder tag = Tag(Model, "li");
+
+    // Morphing the shape to keep Model untouched
+    Model.Metadata.Alternates.Clear();
+    Model.Metadata.Type = "NavigationItemLink";
+    Model.Metadata.Alternates.Add("NavigationItemLink_Id__" + Model.Id);
+
+
+    var selected = (bool)Model.Selected;
+    tag.InnerHtml.AppendHtml(await DisplayAsync(Model));
+    //tag.Attributes["aria-expanded"] = "false";
+
+    if(Model.HasItems)
+    {
+        var innerTag = new TagBuilder("ul");
+        innerTag.AddCssClass("nav");
+        if (Model.Level == 1)
+        {
+            innerTag.AddCssClass("nav-second-level");
+        }
+        else if (Model.Level == 2)
+        {
+            innerTag.AddCssClass("nav-third-level");
+        }
+
+        foreach (var item in Model)
+        {
+            selected |= (bool)item.Selected;
+            innerTag.InnerHtml.AppendHtml(await DisplayAsync(item));
+        }
+
+        if (selected)
+        {
+
+            innerTag.AddCssClass("collapse in");
+        }
+        else
+        {
+            innerTag.AddCssClass("collapse");
+        }
+
+        tag.InnerHtml.AppendHtml(innerTag);
+    }
+
+    if (selected)
+    {
+        tag.AddCssClass("active");
+    }
+
+}
+
+@tag

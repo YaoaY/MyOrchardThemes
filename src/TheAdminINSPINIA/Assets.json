@@ -2,7 +2,8 @@
   {
     "generateSourceMaps": false,
     "inputs": [
-      "Assets/css/style.css"
+      "Assets/css/admin.scss",
+      "Assets/css/Inspinia.css"
     ],
     "output": "Content/css/style.min.css"
   }

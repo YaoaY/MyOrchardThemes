@@ -7,9 +7,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{CE5CA7A2-D33
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TheAdminINSPINIA", "src\TheAdminINSPINIA\TheAdminINSPINIA.csproj", "{671D32F2-7878-4B19-B1D2-A2F82D28E5DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Themes.Web", "src\Themes.Web\Themes.Web.csproj", "{F1BD3542-773B-4312-8545-40A929E31DB0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Themes.Web", "src\Themes.Web\Themes.Web.csproj", "{F1BD3542-773B-4312-8545-40A929E31DB0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrchardCore.ResourceX", "src\OrchardCore.ResourceX\OrchardCore.ResourceX.csproj", "{BD3D9A16-AC59-49ED-A1FC-99A30B496EFA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3CF44760-FC83-4395-826E-6F22586AEF27}"
+	ProjectSection(SolutionItems) = preProject
+		gulpfile.js = gulpfile.js
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
