@@ -24,9 +24,9 @@
     <div id="wrapper">
         @await RenderSectionAsync("Navigation", required: false)
         <div id="page-wrapper" class="gray-bg">
-            @await RenderSectionAsync("NavbarTop", required: false)
+            @await DisplayAsync(await New.NavbarTop())
             @await RenderBodyAsync()
-            @await RenderSectionAsync("Footer", required: false)
+            @await DisplayAsync(await New.Footer())
         </div>
     </div>
     <resources type="Footer"/>
