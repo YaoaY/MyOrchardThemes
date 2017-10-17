@@ -9,7 +9,10 @@
     tag.InnerHtml.AppendHtml("<span class=\"nav-label\">");
     tag.InnerHtml.AppendHtml(await DisplayAsync(Model));
     tag.InnerHtml.AppendHtml("</span>");
-    
+    if(Model.HasItems)
+    {
+        tag.InnerHtml.AppendHtml("<span class=\"fa arrow\"></span>");
+    }
 
 }
 @tag
