@@ -1,1 +1,73 @@
-﻿Users
+﻿@model OrchardCore.Users.ViewModels.UsersIndexViewModel
+
+
+@*
+    https://github.com/OrchardCMS/OrchardCore/issues/1104
+*@
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h1>@RenderTitleSegments(T["Users"])</h1>
+        <ol class="breadcrumb">
+            <li>
+                <a href="/admin">Home</a>
+            </li>
+            <li>
+                @T["Security"]
+            </li>
+            <li class="active">
+                <strong>@T["Users"]</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2"></div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <form asp-action="Index" method="get" class="form-inline">
+                                <div class="input-group">
+                                    <input id="search-box" asp-for="Options.Search" type="text" class="input-sm form-control" placeholder="@T["Search"]" autofocus="autofocus">  <span class="input-group-btn">
+                                        <button type="submit" class="btn btn-sm btn-primary">@T["Search"]</button>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    @using (Html.BeginForm())
+                    {
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+
+                                        <th></th>
+                                        <th>User Name</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var entry in Model.Users)
+                                    {
+                                        <tr>
+                                            <td><input type="checkbox" checked class="i-checks" name="input[]"></td>
+                                            @await DisplayAsync(entry.Shape)
+                                        </tr>
+                                    }
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
