@@ -8568,3 +8568,12 @@ body.md-skin {
 
 .nav.nav-third-level > li.active {
   border: none; }
+
+.ibox-thin {
+  margin-bottom: 10px; }
+
+.ibox-content-thin {
+  padding: 5px 10px 20px 20px; }
+
+.table-thin {
+  margin-bottom: 10px; }

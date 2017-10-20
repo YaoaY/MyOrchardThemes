@@ -1,12 +1,7 @@
-﻿@model OrchardCore.Users.ViewModels.UsersIndexViewModel
-
-@*
-    https://github.com/OrchardCMS/OrchardCore/issues/1104
-*@
-
+﻿@model OrchardCore.Roles.ViewModels.RolesViewModel
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
-        <h1>@RenderTitleSegments(T["Users"])</h1>
+        <h1>@RenderTitleSegments(T["Roles"])</h1>
         <ol class="breadcrumb">
             <li>
                 <a href="/admin">Home</a>
@@ -15,7 +10,7 @@
                 @T["Security"]
             </li>
             <li class="active">
-                <strong>@T["Users"]</strong>
+                <strong>@T["Roles"]</strong>
             </li>
         </ol>
     </div>
@@ -28,10 +23,13 @@
             <div class="ibox float-e-margins">
                 <div class="ibox-content">
                     <div class="row">
+                        <div class="col-sm-4 m-b-xs">
+                            <a asp-route-action="Create" class="btn btn-primary" role="button">@T["Add Role"]</a>
+                        </div>
                         <div class="col-sm-3">
                             <form asp-action="Index" method="get" class="form-inline">
                                 <div class="input-group">
-                                    <input id="search-box" asp-for="Options.Search" type="text" class="input-sm form-control" placeholder="@T["Search"]" autofocus="autofocus">  <span class="input-group-btn">
+                                    <input id="search-box" type="text" class="input-sm form-control" placeholder="@T["Search"]" autofocus="autofocus">  <span class="input-group-btn">
                                         <button type="submit" class="btn btn-sm btn-primary">@T["Search"]</button>
                                     </span>
                                 </div>
@@ -39,34 +37,36 @@
                         </div>
                     </div>
 
-                    @using (Html.BeginForm())
-                    {
+                    <form asp-action="Index">
                         <div class="table-responsive">
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
 
-                                        <th></th>
+                                        <th>#</th>
                                         <th>User Name</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach (var entry in Model.Users)
+                                    @for (var i = 0; i < Model.RoleEntries.Count; i++)
                                     {
                                         <tr>
-                                            <td><input type="checkbox" checked class="i-checks" name="input[]"></td>
-                                            @await DisplayAsync(entry.Shape)
+                                            <td><input type="checkbox" asp-for="RoleEntries[i].Selected" class="i-checks" /></td>
+                                            <td>@Model.RoleEntries[i].Name</td>
+                                            <td>
+                                                <a class="edit btn btn-primary btn-sm" role="button" asp-action="Edit" asp-route-id="@Model.RoleEntries[i].Name">@T["Edit"]</a>
+                                                <a class="delete btn btn-danger btn-sm" asp-route-id="@Model.RoleEntries[i].Name" role="button" asp-action="Delete" itemprop="UnsafeUrl RemoveUrl">@T["Delete"]</a>
+                                            </td>
                                         </tr>
                                     }
-
                                 </tbody>
                             </table>
                         </div>
-                    }
-
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
