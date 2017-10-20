@@ -1,0 +1,120 @@
+﻿@model OrchardCore.Tenants.ViewModels.AdminIndexViewModel
+@using OrchardCore.Environment.Shell.Models
+@using OrchardCore.Environment.Shell
+
+@functions {
+    public string GetTenantUrl(ShellSettings tenantShellSettings)
+    {
+        var requestHostInfo = Context.Request.Host;
+
+        var tenantUrlHost = tenantShellSettings.RequestUrlHost?.Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries).First() ?? requestHostInfo.Host;
+        if (requestHostInfo.Port.HasValue)
+        {
+            tenantUrlHost += ":" + requestHostInfo.Port;
+        }
+
+        var result = $"{Context.Request.Scheme}://{tenantUrlHost}";
+
+        if (!string.IsNullOrEmpty(tenantShellSettings.RequestUrlPrefix))
+        {
+            result += "/" + tenantShellSettings.RequestUrlPrefix;
+        }
+
+        return result;
+    }
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <ol class="breadcrumb">
+            <li>
+                <a href="/admin">Home</a>
+            </li>
+            <li class="active">
+                <strong>@RenderTitleSegments(T["Tenants"])</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2"></div>
+</div>
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <a asp-route-action="Create" class="btn btn-primary" role="button">@T["Add Tenant"]</a>
+                        </div>
+                    </div>
+                    <form asp-action="Index">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th class="col-lg-1"></th>
+                                        <th>Tenants Name</th>
+                                        <th>Path</th>
+                                        <th>Status</th>
+                                        <th class="col-lg-2">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var entry in Model.ShellSettingsEntries)
+                                    {
+                                        <tr>
+                                            <td><input type="checkbox" class="i-checks" name="input[]"></td>
+                                            <td>
+                                                <a href="@GetTenantUrl(entry.ShellSettings)"><h3>@entry.Name</h3></a>
+                                            </td>
+                                            <td><code class="hint">@entry.ShellSettings.RequestUrlHost/@entry.ShellSettings.RequestUrlPrefix</code></td>
+                                            <td>
+                                                @switch (entry.ShellSettings.State)
+                                                {
+                                                    case TenantState.Disabled:
+                                                        <span class="badge badge-default">@T["Disabled"]</span>
+                                                        break;
+                                                    case TenantState.Initializing:
+                                                        <span class="badge badge-Info">@T["Initializing"]</span>
+                                                        break;
+                                                    case TenantState.Invalid:
+                                                        <span class="badge badge-warning">@T["Invalid"]</span>
+                                                        break;
+                                                    case TenantState.Running:
+                                                        <span class="badge badge-success">@T["Running"]</span>
+                                                        break;
+                                                    case TenantState.Uninitialized:
+                                                        <span class="badge badge-primary">@T["Uninitialized"]</span>
+                                                        break;
+                                                }
+                                            </td>
+                                            <td>
+                                                <a asp-action="Edit" asp-route-id="@entry.Name" class="btn btn-primary btn-sm">@T["Edit"]</a>
+                                                @if (!entry.IsDefaultTenant && entry.ShellSettings.State == TenantState.Running)
+                                                {
+                                                    <a asp-action="Disable" asp-route-id="@entry.Name" class="btn btn-warning btn-sm" itemprop="UnsafeUrl">@T["Disable"]</a>
+                                                }
+                                                @if (entry.ShellSettings.State == TenantState.Disabled)
+                                                {
+                                                    <a asp-action="Enable" asp-route-id="@entry.Name" class="btn btn-success btn-sm" itemprop="UnsafeUrl">@T["Enable"]</a>
+                                                }
+                                                @if (entry.ShellSettings.State == TenantState.Uninitialized)
+                                                {
+                                                    <a class="btn btn-success btn-sm" href="@GetTenantUrl(entry.ShellSettings)">@T["Setup"]</a>
+                                                }
+                                                <a asp-action="Reload" asp-route-id="@entry.Name" class="btn btn-info btn-sm" itemprop="UnsafeUrl">@T["Reload"]</a>
+                                            </td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
