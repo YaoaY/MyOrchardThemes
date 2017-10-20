@@ -67,10 +67,10 @@
                                         <tr data-text="@permission.Description">
                                             <td class="col-10">@permission.Description</td>
                                             <td class="col-1">
-                                                <input type="checkbox" value="true" name="Checkbox.@permission.Name" checked="@(Model.Role.RoleClaims.Any(x => x.ClaimValue == permission.Name))" />
+                                                <input class="i-checks" type="checkbox" value="true" name="Checkbox.@permission.Name" checked="@(Model.Role.RoleClaims.Any(x => x.ClaimValue == permission.Name))" />
                                             </td>
                                             <td class="col-1">
-                                                <input type="checkbox" disabled="disabled" name="Effective.@permission.Name" checked="@(Model.EffectivePermissions.Contains(permission.Name))" />
+                                                <input class="i-checks" type="checkbox" disabled="disabled" name="Effective.@permission.Name" checked="@(Model.EffectivePermissions.Contains(permission.Name))" />
                                             </td>
                                         </tr>
                                     }

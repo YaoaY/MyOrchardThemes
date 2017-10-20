@@ -16,6 +16,11 @@ $(document).ready(function () {
         $('body').removeClass('body-small')
     }
 
+    $('.i-checks').iCheck({
+        checkboxClass: 'icheckbox_square-green',
+        radioClass: 'iradio_square-green',
+    });
+
     // MetsiMenu
     $('#side-menu').metisMenu();
 
