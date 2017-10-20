@@ -60,6 +60,17 @@ namespace OrchardCore.ResourceX
                 .SetCdn("https://cdn.bootcss.com/animate.css/3.5.2/animate.min.css")
                 .SetVersion("3.5.2");
 
+            manifest
+                .DefineScript("X-icheck")
+                .SetUrl($"{area}/icheck/icheck.min.js")
+                .SetCdn("https://cdn.bootcss.com/iCheck/1.0.2/icheck.min.js")
+                .SetVersion("1.0.2");
+
+            manifest
+                .DefineStyle("X-icheck-skins-all")
+                .SetUrl($"{area}/icheck/skins/all.css")
+                .SetCdn("https://cdn.bootcss.com/iCheck/1.0.2/skins/all.css")
+                .SetVersion("1.0.2");
         }
     }
 }
