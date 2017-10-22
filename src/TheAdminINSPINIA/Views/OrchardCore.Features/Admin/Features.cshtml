@@ -1,11 +1,161 @@
-﻿<!DOCTYPE html>
+﻿@model OrchardCore.Features.ViewModels.FeaturesViewModel
 
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="utf-8" />
-    <title></title>
-</head>
-<body>
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <ol class="breadcrumb">
+            <li>
+                <a href="/admin">Home</a>
+            </li>
+            <li>
+                @T["Design"]
+            </li>
+            <li class="active">
+                <strong>@RenderTitleSegments(T["Features"])</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2"></div>
+</div>
 
-</body>
-</html>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <form method="get" class="form-inline float-right">
+                                <div class="input-group">
+                                    <input id="search-box" type="text" class="input-sm form-control" placeholder="@T["Search"]" autofocus="autofocus">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <form asp-action="Features">
+            <div class="col-lg-12">
+                @{
+                    var featureGroups = Model.Features.GroupBy(f => f.Descriptor.Category).ToList();
+                    foreach (var featureGroup in featureGroups)
+                    {
+                        if (!featureGroup.Any(x => Model.IsAllowed(x.Descriptor.Extension)))
+                        {
+                            continue;
+                        }
+                        var categoryName = featureGroup.First().Descriptor.Category ?? T["Uncategorized"].Value;
+                        var categoryClassName = string.Format("category {0}", Html.Encode(categoryName.ToString()));
+                        if (featureGroup == featureGroups.First())
+                        {
+                            categoryClassName += "first";
+                        }
+                        if (featureGroup == featureGroups.Last())
+                        {
+                            categoryClassName += "last";
+                        }
+                        <div class="ibox float-e-margins ibox-thin">
+                            <div class="ibox-title">
+                                <h5>@categoryName</h5>
+                                <div class="ibox-tools">
+                                    <a class="collapse-link">
+                                        <i class="fa fa-chevron-up"></i>
+                                    </a>
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                        <i class="fa fa-wrench"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="ibox-content">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+
+                                                <th style="width:2%"></th>
+                                                <th class="col-lg-2">Feature Name</th>
+                                                <th>Description</th>
+                                                <th>Dependencies</th>
+                                                <th class="col-lg-1">Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @{
+                                                var features = featureGroup.OrderBy(f => f.Descriptor.Name);
+                                                var categoryFeatureNames = String.Join(" ", features.Select(f => f.Descriptor.Name));
+
+                                                foreach (var feature in features)
+                                                {
+                                                    if (!Model.IsAllowed(feature.Descriptor.Extension))
+                                                    {
+                                                        continue;
+                                                    }
+
+                                                    var featureId = feature.Descriptor.Id;
+                                                    var featureName = feature.Descriptor.Name;
+                                                    var featureState = feature.IsEnabled ? "enabled" : "disabled";
+
+                                                    var dependencies = (from d in feature.Descriptor.Dependencies
+                                                                        select (from f in Model.Features where f.Descriptor.Id == d select f).SingleOrDefault()).Where(f => f != null).OrderBy(f => f.Descriptor.Name);
+                                                    var missingDependencies = feature.Descriptor.Dependencies
+                                                        .Where(d => !Model.Features.Any(f => f.Descriptor.Id == d));
+
+                                                    var showDisable = true;
+                                                    var showEnable = Model.IsAllowed(feature.Descriptor.Extension) && !missingDependencies.Any() && feature.Descriptor.Id != "OrchardCore.Setup";
+                                                    <tr>
+                                                        <td>
+                                                            @if ((showEnable && !feature.IsEnabled) || (showDisable && feature.IsEnabled))
+                                                            {
+                                                                <input class="i-checks" type="checkbox" name="featureIds" id="@feature.Descriptor.Id" value="@feature.Descriptor.Id" />
+                                                            }                                                            
+                                                        </td>
+                                                        <td>
+                                                            <h5>@featureName</h5>
+                                                        </td>
+                                                        <td>
+                                                            @feature.Descriptor.Description
+                                                        </td>
+                                                        <td>
+                                                            @if (feature.Descriptor.Dependencies != null && feature.Descriptor.Dependencies.Any())
+                                                            {
+                                                                @foreach (var d in dependencies)
+                                                                {
+                                                                    <span class="badge badge-default">
+                                                                        @(string.IsNullOrEmpty(d.Descriptor.Name) ? d.Descriptor.Id : d.Descriptor.Name)
+                                                                    </span>
+                                                                }
+                                                                @foreach (var d in missingDependencies)
+                                                                {
+                                                                    <span class="badge badge-warning">
+                                                                        @d
+                                                                    </span>
+                                                                }
+                                                            }
+                                                        </td>
+                                                        <td>
+                                                            @if (showEnable && !feature.IsEnabled)
+                                                            {
+                                                                <a asp-action="Enable" asp-route-id="@feature.Descriptor.Id" class="btn btn-primary btn-sm" itemprop="UnsafeUrl">@T["Enable"]</a>
+                                                            }
+
+                                                            @if (showDisable && feature.IsEnabled)
+                                                            {
+                                                                <a asp-action="Disable" asp-route-id="@feature.Descriptor.Id" class="btn btn-danger btn-sm" itemprop="UnsafeUrl">@T["Disable"]</a>
+                                                            }
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </form>
+    </div>
+</div>
