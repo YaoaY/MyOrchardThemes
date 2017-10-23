@@ -6,5 +6,13 @@
       "Assets/css/admin.scss"
     ],
     "output": "Content/css/style.css"
+  },
+  {
+    "generateSourceMaps": false,
+    "inputs": [
+      "Assets/js/admin.js",
+      "Assets/js/script.js"
+    ],
+    "output": "Content/js/script.js"
   }
 ]

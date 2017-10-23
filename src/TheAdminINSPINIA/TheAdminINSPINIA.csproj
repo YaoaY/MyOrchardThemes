@@ -33,7 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Assets\js\" />
+    <Folder Include="Content\js\" />
   </ItemGroup>
 
 </Project>

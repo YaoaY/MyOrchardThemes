@@ -224,11 +224,10 @@ function buildJsPipeline(assetGroup, doConcat, doRebuild) {
         .pipe(plumber())
         .pipe(gulpif(generateSourceMaps, sourcemaps.init()))
         .pipe(gulpif("*.ts", typescript({
-            declaration: false,
-            noImplicitAny: true,
-            noEmitOnError: true,
-            sortOutput: true,
-        }).js))
+            declaration: false,            
+            noImplicitAny:true,
+            noEmitOnError: true
+        })))
         .pipe(gulpif(doConcat, concat(assetGroup.outputFileName)))
         .pipe(header(
             "/*\n" +
@@ -243,7 +242,7 @@ function buildJsPipeline(assetGroup, doConcat, doRebuild) {
         .pipe(rename({
             suffix: ".min"
         }))
-        .pipe(eol())
+        .pipe(eol())        
         .pipe(gulp.dest(assetGroup.outputDir))
         // Uncomment to copy assets to wwwroot
         //.pipe(gulp.dest(assetGroup.webroot));
