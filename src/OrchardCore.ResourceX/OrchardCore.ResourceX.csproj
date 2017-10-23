@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
@@ -25,9 +25,9 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.0.0" />
     <PackageReference Include="OrchardCore.AsModule" Version="1.0.0-beta1-3219" />
-    <PackageReference Include="OrchardCore.ContentManagement" Version="1.0.0-beta1-3375" />
-    <PackageReference Include="OrchardCore.DisplayManagement" Version="1.0.0-beta1-3375" />
-    <PackageReference Include="OrchardCore.ResourceManagement.Abstractions" Version="1.0.0-beta1-3375" />
+    <PackageReference Include="OrchardCore.ContentManagement" Version="1.0.0-beta1-3410" />
+    <PackageReference Include="OrchardCore.DisplayManagement" Version="1.0.0-beta1-3410" />
+    <PackageReference Include="OrchardCore.ResourceManagement.Abstractions" Version="1.0.0-beta1-3410" />
   </ItemGroup>
 
   <ItemGroup>
