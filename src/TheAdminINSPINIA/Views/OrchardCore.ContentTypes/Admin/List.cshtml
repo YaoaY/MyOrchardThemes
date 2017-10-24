@@ -6,32 +6,44 @@
     </div>
 </div>
 
-<nav class="admin-toolbar">
-    <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-            <a asp-route-action="Create" id="btnCreate" class="btn btn-primary" role="button">@T["Create new type"]</a>
-        </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-        <input id="search-box" class="form-control mr-sm-2" type="text" placeholder="@T["Filter"]" autofocus="autofocus">
-    </form>
-</nav>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <a asp-route-action="Create" id="btnCreate" class="btn btn-primary" role="button">@T["Create new type"]</a>
+                        </div>
+                        <div class="col-sm-1">
+                            <form method="get" class="form-inline float-right">
+                                <input id="search-box" type="text" class="form-control" placeholder="@T["Filter"]" autofocus="autofocus">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <ul class="list-group">
+            @foreach (var type in Model.Types)
+            {
+                <li class="list-group-item" data-filter-value="@type.DisplayName" data-type-name="@type.Name">
+                    @Html.DisplayFor(m => type)
+                </li>
+            }
+        </ul>
+    </div>
+</div>
 
-<ul class="list-group">
-    @foreach (var type in Model.Types)
-    {
-        <li class="list-group-item" data-filter-value="@type.DisplayName" data-type-name="@type.Name">
-            @Html.DisplayFor(m => type)
-        </li>
-    }
-</ul>
 <script at="Foot" type="text/javascript">
     //<![CDATA[
-    $(function() {
+    $(function () {
         var searchBox = $('#search-box');
 
         // On each keypress filter the list of types
-        searchBox.keyup(function(e) {
+        searchBox.keyup(function (e) {
             var search = $(this).val().toLowerCase();
 
             var elementsToFilter = $("[data-filter-value]");
@@ -41,7 +53,7 @@
                 searchBox.val('');
                 elementsToFilter.toggle(true);
             } else {
-                elementsToFilter.each(function() {
+                elementsToFilter.each(function () {
                     var text = $(this).data('filter-value').toLowerCase();
                     var found = text.indexOf(search) > -1;
                     $(this).toggle(found);
