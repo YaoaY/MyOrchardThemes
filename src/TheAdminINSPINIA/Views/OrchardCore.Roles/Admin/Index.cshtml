@@ -1,20 +1,9 @@
 ﻿@model OrchardCore.Roles.ViewModels.RolesViewModel
+
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
-        <h1>@RenderTitleSegments(T["Roles"])</h1>
-        <ol class="breadcrumb">
-            <li>
-                <a href="/admin">Home</a>
-            </li>
-            <li>
-                @T["Security"]
-            </li>
-            <li class="active">
-                <strong>@T["Roles"]</strong>
-            </li>
-        </ol>
+        @await DisplayAsync(await New.BreadCrumb(Name: "Roles", Paths: new string[] { "Security" }))
     </div>
-    <div class="col-lg-2"></div>
 </div>
 
 <div class="wrapper wrapper-content animated fadeInRight">

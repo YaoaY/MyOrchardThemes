@@ -26,16 +26,8 @@
 
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
-        <ol class="breadcrumb">
-            <li>
-                <a href="/admin">Home</a>
-            </li>
-            <li class="active">
-                <strong>@RenderTitleSegments(T["Tenants"])</strong>
-            </li>
-        </ol>
+        @await DisplayAsync(await New.BreadCrumb(Name: "Tenants"))
     </div>
-    <div class="col-lg-2"></div>
 </div>
 
 

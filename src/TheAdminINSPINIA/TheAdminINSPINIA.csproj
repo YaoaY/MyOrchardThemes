@@ -34,6 +34,7 @@
 
   <ItemGroup>
     <Folder Include="Content\js\" />
+    <Folder Include="Views\Shared\" />
   </ItemGroup>
 
 </Project>

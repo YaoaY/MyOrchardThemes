@@ -1,0 +1,18 @@
+﻿<h1>@RenderTitleSegments(T[$"{Model.Name}"])</h1>
+<ol class="breadcrumb">
+    <li>
+        <a href="/admin">Home</a>
+    </li>
+    @if (Model.Paths != null)
+    {
+        @foreach (var path in Model.Paths)
+        {
+            <li>
+                @T[$"{path}"]
+            </li>
+        }
+    }
+    <li class="active">
+        <strong>@T[$"{Model.Name}"]</strong>
+    </li>
+</ol>

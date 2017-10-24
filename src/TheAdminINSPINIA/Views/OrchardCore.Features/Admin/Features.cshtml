@@ -2,19 +2,8 @@
 
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
-        <ol class="breadcrumb">
-            <li>
-                <a href="/admin">Home</a>
-            </li>
-            <li>
-                @T["Design"]
-            </li>
-            <li class="active">
-                <strong>@RenderTitleSegments(T["Features"])</strong>
-            </li>
-        </ol>
+        @await DisplayAsync(await New.BreadCrumb(Name: "Features", Paths: new string[] { "Design" }))
     </div>
-    <div class="col-lg-2"></div>
 </div>
 
 <div class="wrapper wrapper-content animated fadeInRight">
