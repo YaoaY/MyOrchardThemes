@@ -1,8 +1,8 @@
-﻿@model OrchardCore.ContentTypes.ViewModels.ListContentTypesViewModel
+﻿@model OrchardCore.ContentTypes.ViewModels.ListContentPartsViewModel
 
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
-        @await DisplayAsync(await New.BreadCrumb(Name: "Content Types", Paths: new string[] { "Content Definition" }))
+        @await DisplayAsync(await New.BreadCrumb(Name: "Content Parts", Paths: new string[] { "Content Definition" }))
     </div>
 </div>
 
@@ -13,7 +13,7 @@
                 <div class="ibox-content">
                     <div class="row">
                         <div class="col-sm-1">
-                            <a asp-route-action="Create" id="btnCreate" class="btn btn-primary" role="button">@T["Create new type"]</a>
+                            <a asp-route-action="CreatePart" id="btnCreate" class="btn btn-primary" role="button">@T["Create new part"]</a>
                         </div>
                         <div>
                             <form method="get" class="form-inline">
@@ -26,14 +26,20 @@
         </div>
     </div>
     <div class="row">
-        <ul class="list-group">
-            @foreach (var type in Model.Types)
-            {
-                <li class="list-group-item" data-filter-value="@type.DisplayName" data-type-name="@type.Name">
-                    @Html.DisplayFor(m => type)
-                </li>
-            }
-        </ul>
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <ul class="list-group">
+                        @foreach (var type in Model.Parts){
+                            <li class="list-group-item" data-filter-value="@type.DisplayName" data-type-name="@type.Name">
+                                @Html.DisplayFor(m => type)
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
 

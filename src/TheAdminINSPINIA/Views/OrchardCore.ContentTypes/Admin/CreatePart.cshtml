@@ -1,0 +1,29 @@
+﻿@model OrchardCore.ContentTypes.ViewModels.CreatePartViewModel
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        @await DisplayAsync(await New.BreadCrumb(Name: "New Content Part", Paths: new string[] { "Content Definition", "Content Type" }))
+    </div>
+</div>
+
+<div class="wrapper wrapper-content animated fadedInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <form asp-action="CreatePart">
+                        @Html.ValidationSummary()
+                        <fieldset class="form-group">
+                            <label for="Name">@T["Name"]</label>
+                            <input asp-for="Name" class="form-control" autofocus="autofocus" />
+                            <span class="hint">@T["Use no spaces or special characters. For example, \"MyCustomPart\""]</span>
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <button class="btn btn-primary" type="submit">@T["Create"]</button>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
