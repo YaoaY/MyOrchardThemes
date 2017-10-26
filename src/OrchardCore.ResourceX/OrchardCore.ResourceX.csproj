@@ -2,7 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>1.0.0-beta1-3410</Version>
+    <Version>1.0.0-beta1-3440</Version>
+    <Description>Some additional js/css resource to OrchardCore.Resource</Description>
   </PropertyGroup>
 
   <ItemGroup>
@@ -25,10 +26,10 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.0.0" />
-    <PackageReference Include="OrchardCore.AsModule" Version="1.0.0-beta1-3219" />
-    <PackageReference Include="OrchardCore.ContentManagement" Version="1.0.0-beta1-3410" />
-    <PackageReference Include="OrchardCore.DisplayManagement" Version="1.0.0-beta1-3410" />
-    <PackageReference Include="OrchardCore.ResourceManagement.Abstractions" Version="1.0.0-beta1-3410" />
+    <PackageReference Include="OrchardCore.ContentManagement" Version="1.0.0-beta1-3440" />
+    <PackageReference Include="OrchardCore.DisplayManagement" Version="1.0.0-beta1-3440" />
+    <PackageReference Include="OrchardCore.Module.Targets" Version="1.0.0-beta1-3440" />
+    <PackageReference Include="OrchardCore.ResourceManagement.Abstractions" Version="1.0.0-beta1-3440" />
   </ItemGroup>
 
   <ItemGroup>
