@@ -6,6 +6,7 @@
   "dependencies": {
     "animate.css": "^3.5.2",
     "bootstrap": "^3.3.7",
+    "bootstrap-table": "^1.11.2",
     "font-awesome": "^4.7.0",
     "icheck": "^1.0.2",
     "jquery": "^3.2.1",

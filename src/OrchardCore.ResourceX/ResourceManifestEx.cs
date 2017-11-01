@@ -71,6 +71,18 @@ namespace OrchardCore.ResourceX
                 .SetUrl($"{area}/icheck/skins/all.css")
                 .SetCdn("https://cdn.bootcss.com/iCheck/1.0.2/skins/all.css")
                 .SetVersion("1.0.2");
+
+            manifest
+                .DefineStyle("X-bootstrap-table")
+                .SetUrl($"{area}/bootstrap-table/bootstrap-table.min.css")
+                .SetCdn("https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.css")
+                .SetVersion("1.11.1");
+
+            manifest
+                .DefineScript("X-bootstrap-table")
+                .SetUrl($"{area}/bootstrap-table/bootstrap-table.min.js")
+                .SetCdn("https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.js")
+                .SetVersion("1.11.1");
         }
     }
 }
