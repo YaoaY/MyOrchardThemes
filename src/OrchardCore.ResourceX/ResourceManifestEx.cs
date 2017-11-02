@@ -14,6 +14,7 @@ namespace OrchardCore.ResourceX
 
             manifest
                 .DefineScript("X-jQuery")
+                .SetUrl($"{area}/jquery/jquery.min.js")
                 .SetCdn("https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js")
                 .SetVersion("3.2.1");
 
