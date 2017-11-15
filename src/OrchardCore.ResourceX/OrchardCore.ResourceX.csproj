@@ -2,9 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>1.0.0-beta1-3440-3</Version>
+    <Version>1.0.0-beta1-3440-5</Version>
     <Description>Some additional js/css resource to OrchardCore.Resource</Description>
-    <PackageReleaseNotes>Fix local url of jquery.min.js</PackageReleaseNotes>
+    <PackageReleaseNotes>Fix dependencies for Bootstrap-table style</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
@@ -27,10 +27,10 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.0.0" />
-    <PackageReference Include="OrchardCore.ContentManagement" Version="1.0.0-beta1-3440" />
-    <PackageReference Include="OrchardCore.DisplayManagement" Version="1.0.0-beta1-3440" />
-    <PackageReference Include="OrchardCore.Module.Targets" Version="1.0.0-beta1-3440" />
-    <PackageReference Include="OrchardCore.ResourceManagement.Abstractions" Version="1.0.0-beta1-3440" />
+    <PackageReference Include="OrchardCore.ContentManagement" Version="1.0.0-beta1-3630" />
+    <PackageReference Include="OrchardCore.DisplayManagement" Version="1.0.0-beta1-3630" />
+    <PackageReference Include="OrchardCore.Module.Targets" Version="1.0.0-beta1-3630" />
+    <PackageReference Include="OrchardCore.ResourceManagement.Abstractions" Version="1.0.0-beta1-3630" />
   </ItemGroup>
 
   <ItemGroup>

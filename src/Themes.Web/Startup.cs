@@ -28,7 +28,7 @@ namespace Themes.Web
             }
             
 
-            app.UseModules();
+            app.UseModules();            
         }
     }
 }

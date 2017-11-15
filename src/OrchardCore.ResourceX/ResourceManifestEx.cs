@@ -75,12 +75,14 @@ namespace OrchardCore.ResourceX
 
             manifest
                 .DefineStyle("X-bootstrap-table")
+                .SetDependencies("X-bootstrap")
                 .SetUrl($"{area}/bootstrap-table/bootstrap-table.min.css")
                 .SetCdn("https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.css")
                 .SetVersion("1.11.1");
 
             manifest
                 .DefineScript("X-bootstrap-table")
+                .SetDependencies("X-jQuery")
                 .SetUrl($"{area}/bootstrap-table/bootstrap-table.min.js")
                 .SetCdn("https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.js")
                 .SetVersion("1.11.1");

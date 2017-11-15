@@ -18,9 +18,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="OrchardCore.DisplayManagement" Version="1.0.0-beta1-3410" />
-    <PackageReference Include="OrchardCore.Theme.Targets" Version="1.0.0-beta1-3410" />
-    <PackageReference Include="OrchardCore.Users" Version="1.0.0-beta1-3410">
+    <PackageReference Include="OrchardCore.DisplayManagement" Version="1.0.0-beta1-3630" />
+    <PackageReference Include="OrchardCore.Theme.Targets" Version="1.0.0-beta1-3630" />
+    <PackageReference Include="OrchardCore.Users" Version="1.0.0-beta1-3630">
       <PrivateAssets>All</PrivateAssets>
     </PackageReference>
   </ItemGroup>
