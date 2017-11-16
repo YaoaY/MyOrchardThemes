@@ -1,8 +1,0 @@
-Default:
-  RequestUrlHost: &1949604570 ~
-  RequestUrlPrefix: ~
-  DatabaseProvider: SqlConnection
-  TablePrefix: ~
-  ConnectionString: Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ThemesTester;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False
-  State: Running
-...
