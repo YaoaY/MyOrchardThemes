@@ -14,5 +14,11 @@
       "Assets/js/script.js"
     ],
     "output": "Content/js/script.js"
+  },
+  {
+    "inputs": [
+      "Assets/*.png"
+    ],
+    "output": "Content/*"
   }
 ]

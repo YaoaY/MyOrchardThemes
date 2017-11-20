@@ -125,7 +125,14 @@ function createAssetGroupTask(assetGroup, doRebuild) {
             return buildCssPipeline(assetGroup, doConcat, doRebuild);
         case ".js":
             return buildJsPipeline(assetGroup, doConcat, doRebuild);
+        default:
+            return copyPipeline(assetGroup);
     }
+}
+
+function copyPipeline(assetGroup) {
+    return gulp.src(assetGroup.inputPaths)
+        .pipe(gulp.dest(assetGroup.outputDir));
 }
 
 /*
